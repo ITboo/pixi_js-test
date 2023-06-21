@@ -1,7 +1,10 @@
 import { Container, Graphics } from "../../pixi/pixi.mjs";
 
 export default class Hero extends Container {
-    #GRAVITY_FORCE = 1;
+    #GRAVITY_FORCE = 0.1;
+    #SPEED = 2
+    #velocityX = 0;
+    #velocityY = 0;
     constructor() {
         super();
         const view = new Graphics();
@@ -9,8 +12,14 @@ export default class Hero extends Container {
         view.drawRect(0, 0, 20, 60);
         this.addChild(view);
     }
-    update(){
-        this.x += this.#GRAVITY_FORCE
-        this.y += this.#GRAVITY_FORCE
+    update() {
+        this.#velocityX += this.#SPEED;
+        this.y += this.#velocityY;
+
+        this.#velocityY += this.#GRAVITY_FORCE;
+        this.y += this.#velocityY;
     };
+    stay() {
+        this.#velocityY = 0
+    }
 }

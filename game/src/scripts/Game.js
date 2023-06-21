@@ -10,7 +10,7 @@ export default class Game {
 
         this.#hero = new Hero();
         this.#hero.x = 100;
-        this.#hero.y = 250;
+        this.#hero.y = 100;
         this.#pixiapp.stage.addChild(this.#hero);
 
         const platform1 = new Platform();
@@ -47,6 +47,7 @@ export default class Game {
             const currY = this.#hero.y;
             this.#hero.y = prevPoint.y;
             if (!this.isCheckedAABB(this.#hero, this.#platforms[i])) {
+                this.#hero.stay()
                 continue;
             }
             this.#hero.y = currY;
