@@ -10,6 +10,7 @@ export default class Hero extends Container {
         this.addChild(view);
     }
     update(){
+        this.x += this.#GRAVITY_FORCE
         this.y += this.#GRAVITY_FORCE
     };
 }
