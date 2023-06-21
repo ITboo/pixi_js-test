@@ -3,17 +3,21 @@ import Platform from "./Entities/Platform.js";
 
 export default class Game {
     #pixiapp
+    #hero
     constructor(pixiApp) {
-        this.#pixiapp = pixiApp
+        this.#pixiapp = pixiApp;
 
-        const hero = new Hero()
-        hero.x = 200;
-        hero.y = 200;
-        this.#pixiapp.stage.addChild(hero)
+        this.#hero = new Hero();
+        this.#hero.x = 200;
+        this.#hero.y = 200;
+        this.#pixiapp.stage.addChild(this.#hero);
 
-        const platform = new Platform()
+        const platform = new Platform();
         platform.x = 100;
         platform.y = 300;
-        this.#pixiapp.stage.addChild(platform)
+        this.#pixiapp.stage.addChild(platform);
     }
+    update() {
+        this.#hero.update();
+    };
 }

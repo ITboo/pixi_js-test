@@ -7,6 +7,8 @@ const _pixiApp = new PIXI.Application({
     height: 600
 }
 );
+
+const game = new Game(_pixiApp)
+_pixiApp.ticker.add(game.update, game)
 document.body.appendChild(_pixiApp.view);
 
-new Game(_pixiApp)
